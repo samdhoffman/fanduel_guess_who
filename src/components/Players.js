@@ -12,6 +12,7 @@ const Players = () => {
   const [gameOver, setGameOver] = useState(false);
   
   const PLAYER_CARD_COUNT = 4;
+  const WINNING_COUNT = 3;
   const URL = "https://gist.githubusercontent.com/liamjdouglas/bb40ee8721f1a9313c22c6ea0851a105/raw/6b6fc89d55ebe4d9b05c1469349af33651d7e7f1/Player.json"
 
   const loadPlayerData = async () => {
@@ -48,8 +49,16 @@ const Players = () => {
     id == maxPPG.id && setCorrectCount(correctCount + 1);
   }
 
-  const isGameOver = () => correctCount == 3 && setGameOver(true);
+  const isGameOver = () => correctCount == WINNING_COUNT && setGameOver(true);
 
+  const resetGame = () => {
+    shufflePlayers(playerData.data.players);
+    setGuessCount(0);
+    setCorrectCount(0);
+    setGameOver(false);
+  }
+
+  // initial axios get request to load json data
   useEffect(() => { 
     loadPlayerData();
   }, []);
@@ -78,6 +87,8 @@ const Players = () => {
         })
       }
       </section>
+
+      <button onClick={resetGame}>Reset Game</button>
     </div>
   )
 }
