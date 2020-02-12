@@ -15,7 +15,6 @@ const Players = () => {
 
   return (
     <div>
-      
     </div>
   )
 }
