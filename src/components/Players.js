@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Players.scss';
 import PlayerCard from './PlayerCard';
+import GameResult from './GameResult';
 
 const Players = () => {
   const [playerData, setPlayerData] = useState(null);
@@ -80,15 +81,18 @@ const Players = () => {
 
   return (
     <div className="Players">
-      <section className="card-container">
       {
-        shuffledPlayers && shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
-          return <PlayerCard key={i} playerData={player} makeGuess={makeGuess} />
-        })
+        gameOver ?
+        <GameResult resetGame={resetGame} /> :
+        <section className="card-container">
+        {
+          shuffledPlayers && shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
+            return <PlayerCard key={i} playerData={player} makeGuess={makeGuess} />
+          })
+        }
+        </section>
       }
-      </section>
 
-      <button onClick={resetGame}>Reset Game</button>
     </div>
   )
 }
