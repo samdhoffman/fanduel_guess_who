@@ -72,6 +72,11 @@ const Players = () => {
   return (
     <div className="Players">
       <section className="card-container">
+      {
+        shuffledPlayers && shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
+          return <PlayerCard key={i} playerData={player} makeGuess={makeGuess} />
+        })
+      }
       </section>
     </div>
   )
