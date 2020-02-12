@@ -59,6 +59,10 @@ const Players = () => {
     setGameOver(false);
   }
 
+  const generatePlayerCards = shuffledPlayers && shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
+    return <PlayerCard key={i} playerData={player} makeGuess={makeGuess} />
+  });
+
   // initial axios get request to load json data
   useEffect(() => { 
     loadPlayerData();
@@ -84,15 +88,8 @@ const Players = () => {
       {
         gameOver ?
         <GameResult resetGame={resetGame} /> :
-        <section className="card-container">
-        {
-          shuffledPlayers && shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
-            return <PlayerCard key={i} playerData={player} makeGuess={makeGuess} />
-          })
-        }
-        </section>
+        <section className="card-container">{generatePlayerCards}</section>
       }
-
     </div>
   )
 }
