@@ -11,10 +11,35 @@ const Players = () => {
   const [correctCount, setCorrectCount] = useState(0);
   const [maxPPG, setMaxPPG] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  const [correct, setCorrectStatus] = useState(false);
+  const [incorrect, setIncorrectStatus] = useState(false);
   
   const PLAYER_CARD_COUNT = 4;
   const WINNING_COUNT = 3;
   const URL = "https://gist.githubusercontent.com/liamjdouglas/bb40ee8721f1a9313c22c6ea0851a105/raw/6b6fc89d55ebe4d9b05c1469349af33651d7e7f1/Player.json"
+
+    // initial axios get request to load json data
+    useEffect(() => { 
+      loadPlayerData();
+    }, []);
+  
+    // shuffle players for game
+    useEffect(() => {
+      playerData && setTimeout(() => {
+        setCorrectStatus(false);
+        correctCount < WINNING_COUNT && shufflePlayers(playerData.data.players);
+      }, 1000);
+    }, [playerData, correctCount]);
+  
+    // get the player with the highest FPPG
+    useEffect(() => {
+      shuffledPlayers && getMaxPPG();
+    }, [shuffledPlayers]);
+  
+    // check if game is over
+    useEffect(() => {
+      isGameOver();
+    }, [maxPPG, correctCount]);
 
   const loadPlayerData = async () => {
     try {
@@ -26,7 +51,6 @@ const Players = () => {
   }
 
   const shufflePlayers = (arr) => {
-    console.log("shuffling")
     var copy = arr.slice(0);
     let i = copy.length, randomIndex, temp;
 
@@ -45,43 +69,47 @@ const Players = () => {
     setMaxPPG(result);
   }
 
-  const makeGuess = (id) => {
-    setGuessCount(guessCount + 1);
-    id == maxPPG.id && setCorrectCount(correctCount + 1);
+  const resetGuessStatus = () => {
+    setTimeout(() => {
+      setIncorrectStatus(false);
+    }, 1000);
   }
 
-  const isGameOver = () => correctCount == WINNING_COUNT && setGameOver(true);
+  const makeGuess = (id) => {
+    setGuessCount(guessCount + 1);
+    if (id == maxPPG.id) {
+      setCorrectCount(correctCount + 1)
+      setCorrectStatus(true);
+    } else {
+      setIncorrectStatus(true);
+      resetGuessStatus();
+    }
+  }
+
+  const isGameOver = () => {
+    if (correctCount == WINNING_COUNT) {
+      setShuffledPlayers(null);
+      setGameOver(true)};
+    }
 
   const resetGame = () => {
-    shufflePlayers(playerData.data.players);
     setGuessCount(0);
     setCorrectCount(0);
     setGameOver(false);
   }
 
   const generatePlayerCards = shuffledPlayers && shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
-    return <PlayerCard key={i} playerData={player} makeGuess={makeGuess} />
+    return <PlayerCard key={player.id} playerData={player} makeGuess={makeGuess} />
   });
 
-  // initial axios get request to load json data
-  useEffect(() => { 
-    loadPlayerData();
-  }, []);
-
-  // shuffle players for game
-  useEffect(() => {
-    playerData && shufflePlayers(playerData.data.players);
-  }, [playerData, guessCount]);
-
-  // get the player with the highest FPPG
-  useEffect(() => {
-    shuffledPlayers && getMaxPPG();
-  }, [shuffledPlayers]);
-
-  // check if game is over
-  useEffect(() => {
-    isGameOver();
-  }, [maxPPG]);
+  let generateGuessMessage = () => {
+    if (correct) {
+      return <h3>Correct! &#128170;</h3>
+    }
+    if (incorrect) {
+      return <h3>Incorrect &#128532;</h3>
+    }
+  }
 
   return (
     <div className="Players">
@@ -89,6 +117,10 @@ const Players = () => {
         gameOver ?
         <GameResult resetGame={resetGame} /> :
         <section className="card-container">{generatePlayerCards}</section>
+      }
+
+      {
+        generateGuessMessage()
       }
     </div>
   )
