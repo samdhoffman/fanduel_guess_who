@@ -1,0 +1,14 @@
+.PlayerCard {
+  display: flex;
+  padding: 0 20px;
+
+  .player-info {
+    display: flex;
+    flex-direction: column;
+
+    .player-img {
+      height: 200px;
+      width: 200px;
+    }
+  }
+}
