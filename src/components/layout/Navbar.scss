@@ -1,9 +1,17 @@
 .Navbar {
   background: #1493ff;
   color: white;
+  font-size: 20px;
   flex-shrink: 0;
   height: 50px;
   left: 0;
   top: 0;
   z-index: 9999;
+  display: flex;
+  align-items: center;
+
+  .project-name {
+    margin: 0 20px;
+  }
+
 }
