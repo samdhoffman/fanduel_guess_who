@@ -5,9 +5,9 @@ import PlayerGame from './components/PlayerGame';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" data-test="App">
       <Layout>
-        <PlayerGame />
+        <PlayerGame data-test="PlayerGame" />
       </Layout>
     </div>
   );
