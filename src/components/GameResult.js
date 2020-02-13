@@ -5,9 +5,9 @@ const GameResult = ({resetGame}) => {
   return (
     <div className="GameResult">
       <section>
-        <header>Congrats! You have successfully gussed the players with the highest Fanduel Points Per Game!</header>
+        <header>Congrats! You have successfully gussed 10 players with the highest Fanduel Points Per Game!</header>
         <p>To restart the game please click the button below. Happy guessing!</p>
-        <button onClick={() => resetGame()}>Reset Game</button>
+        <button className="reset-btn" onClick={() => resetGame()}>Reset Game</button>
       </section>
     </div>
   )
