@@ -5,3 +5,18 @@
   min-height: 100vh;
   text-align: center;
 }
+
+button {
+  border: none;
+  background: #e7e7e7;
+  font-family: 'Nunito Sans', sans-serif;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1493ff;
+  color: white;
+}
