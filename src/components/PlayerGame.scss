@@ -5,10 +5,22 @@
   justify-content: center;
   height: 100%;
 
-  .card-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+  .game-area {
+
+    .counters {
+      display: flex;
+      justify-content: center;
+
+      p {
+        margin: 10px;
+      }
+    }
+
+    .card-container {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+    }
+
   }
-  
 }

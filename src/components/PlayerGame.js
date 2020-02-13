@@ -137,7 +137,7 @@ class PlayerGame extends Component {
   }
   
   render() {
-    let { gameOver, shuffledPlayers } = this.state
+    let { gameOver, shuffledPlayers, guessCount, correctCount } = this.state
 
     let generatePlayerCards = this.state.shuffledPlayers && this.state.shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
       return <PlayerCard key={player.id} playerData={player} makeGuess={this.makeGuess} />
@@ -148,7 +148,16 @@ class PlayerGame extends Component {
         {
           gameOver ?
           <GameResult resetGame={this.resetGame} /> :
-          shuffledPlayers && <section className="card-container" data-test="card-container">{generatePlayerCards}</section>
+          shuffledPlayers && 
+          <div className="game-area">
+            <section className="counters">
+              <p>Guesses: {guessCount}</p>
+              <p>Correct Guesses: {correctCount}</p>
+            </section>
+            <section className="card-container" data-test="card-container">
+              {generatePlayerCards}
+            </section>
+          </div>
         }
 
         {
