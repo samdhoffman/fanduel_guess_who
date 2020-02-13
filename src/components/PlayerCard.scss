@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
 .PlayerCard {
   display: flex;
   padding: 0 20px;
@@ -11,6 +13,7 @@
 
     .player-name {
       margin: 5px 0;
+      font-weight: bold;
     }
 
     .player-info {
@@ -46,7 +49,9 @@
     }
 
     .guess-btn {
-      border: 2px solid #1493ff;
+      border: none;
+      background: #e7e7e7;
+      font-family: 'Nunito Sans', sans-serif;
       transition-duration: 0.4s;
       text-decoration: none;
       margin: 10px 0;
@@ -54,7 +59,7 @@
     }
 
     .guess-btn:hover {
-      background-color: #1493ff; /* Green */
+      background-color: #1493ff;
       color: white;
     }
   }
