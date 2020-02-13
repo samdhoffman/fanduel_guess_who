@@ -122,14 +122,14 @@ class PlayerGame extends Component {
   generateGuessMessage = () => {
     if (this.state.correctStatus) {
       return (
-        <h3>Correct! 
+        <h3>Correct! &nbsp;
           <span role="img" aria-label="strong">&#128170;</span>
         </h3>
       );
     }
     if (this.state.incorrectStatus) {
       return (
-        <h3>Incorrect 
+        <h3>Incorrect &nbsp; 
           <span role="img" aria-label="sad-face">&#128532;</span>
         </h3>
       );

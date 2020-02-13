@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="Navbar">
       <p className="project-name">
-        Fanduel Guess Who 
+        Fanduel Guess Who &nbsp;
         <span role="img" aria-label="owl">&#129417;</span>
       </p>
     </nav>
