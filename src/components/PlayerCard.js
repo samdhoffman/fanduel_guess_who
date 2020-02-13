@@ -3,11 +3,11 @@ import "./PlayerCard.scss";
 
 const PlayerCard = ({playerData, makeGuess}) => {
   return (
-    <div className="PlayerCard">
+    <div className="PlayerCard" data-test="PlayerCard">
       <div className="player-info">
         <h2>Player Card</h2>
-        <header>{playerData.first_name} {playerData.last_name}</header>
-        <img className="player-img" src={playerData.images.default.url}/>
+        <header data-test="player-name">{playerData.first_name} {playerData.last_name}</header>
+        <img data-test="player-img" className="player-img" src={playerData.images.default.url} alt="player"/>
         <button onClick={() => makeGuess(playerData.id)}>Make Guess</button>
       </div>
     </div>
