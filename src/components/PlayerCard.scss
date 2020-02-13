@@ -49,18 +49,8 @@
     }
 
     .guess-btn {
-      border: none;
-      background: #e7e7e7;
-      font-family: 'Nunito Sans', sans-serif;
-      transition-duration: 0.4s;
-      text-decoration: none;
-      margin: 10px 0;
-      cursor: pointer;
-    }
-
-    .guess-btn:hover {
-      background-color: #1493ff;
-      color: white;
+      font-size: 12px;
+      height: 25px;
     }
   }
 }
