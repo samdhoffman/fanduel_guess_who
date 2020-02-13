@@ -34,7 +34,7 @@ class PlayerGame extends Component {
 
     try {
       const response = await axios.get(URL);
-      this.setState({playerData: response});
+      this.setState({playerData: response.data});
       this.shufflePlayers(response.data.players);
     } catch(error) {
       console.log(error);
@@ -60,7 +60,7 @@ class PlayerGame extends Component {
 
   // get player from shuffled array with highest FPPG
   getMaxPPGPlayer = (players) => {
-    const result = players.reduce((p1, p2) => p1.fppg > p2.fppg ? p1 : p2);
+    const result = players.reduce((p1, p2) => p1.fppg > p2.fppg ? p1 : p2, players[0]);
     this.setState({maxPPGPlayer: result});
   }
 
@@ -97,7 +97,7 @@ class PlayerGame extends Component {
         });
       } else {
         this.setState({correctStatus: false});
-        newCorrectCount < WINNING_COUNT && this.shufflePlayers(this.state.playerData.data.players);
+        newCorrectCount < WINNING_COUNT && this.shufflePlayers(this.state.playerData.players);
       }
     }, 1000);
   }
@@ -116,7 +116,7 @@ class PlayerGame extends Component {
       gameOver: false
     });
 
-    this.shufflePlayers(this.state.playerData.data.players);
+    this.shufflePlayers(this.state.playerData.players);
   }
 
   // show correct or incorrect message based on guess
@@ -138,7 +138,7 @@ class PlayerGame extends Component {
   }
   
   render() {
-    let { gameOver } = this.state
+    let { gameOver, shuffledPlayers } = this.state
 
     let generatePlayerCards = this.state.shuffledPlayers && this.state.shuffledPlayers.slice(0, PLAYER_CARD_COUNT).map((player, i) => {
       return <PlayerCard key={player.id} playerData={player} makeGuess={this.makeGuess} />
@@ -149,7 +149,7 @@ class PlayerGame extends Component {
         {
           gameOver ?
           <GameResult resetGame={this.resetGame} /> :
-          <section className="card-container" data-test="card-container">{generatePlayerCards}</section>
+          shuffledPlayers && <section className="card-container" data-test="card-container">{generatePlayerCards}</section>
         }
 
         {
