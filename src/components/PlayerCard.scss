@@ -2,14 +2,33 @@
   display: flex;
   padding: 0 20px;
   justify-content: center;
+  border: 1px solid black;
+  margin: 10px;
 
   .player-info {
     display: flex;
     flex-direction: column;
 
+    .player-name {
+      margin: 5px 0;
+    }
+
     .player-img {
       height: 200px;
       width: 200px;
+    }
+
+    .guess-btn {
+      border: 2px solid #1493ff;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .guess-btn:hover {
+      background-color: #1493ff; /* Green */
+      color: white;
     }
   }
 }
