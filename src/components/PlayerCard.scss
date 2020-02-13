@@ -5,7 +5,7 @@
   border: 1px solid black;
   margin: 10px;
 
-  .player-info {
+  .player-info-container {
     display: flex;
     flex-direction: column;
 
@@ -13,9 +13,36 @@
       margin: 5px 0;
     }
 
-    .player-img {
-      height: 200px;
-      width: 200px;
+    .player-info {
+      .player-img {
+        height: 200px;
+        width: 200px;
+      }
+
+      .player-details {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        justify-content: center;
+      }
+
+      .fade-out {
+        opacity:0;
+        width:0;
+        height:0;
+        transition: opacity 0.5s 0.5s;
+      }
+
+      .fade-in{
+        opacity:1;
+        width:200px;
+        height:200px;
+        transition: opacity 0.5s 0.5s;
+      }
+
+      .front.fade-out {
+        visibility: hidden;
+      }
     }
 
     .guess-btn {
