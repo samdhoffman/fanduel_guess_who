@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Layout from './components/layout/Layout';
-import Players from './components/Players';
+import PlayerGame from './components/PlayerGame';
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <Players />
+        <PlayerGame />
       </Layout>
     </div>
   );
