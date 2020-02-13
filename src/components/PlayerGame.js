@@ -6,7 +6,7 @@ import PlayerCard from './PlayerCard';
 import GameResult from './GameResult';
 
 const PLAYER_CARD_COUNT = 4;
-const WINNING_COUNT = 2;
+const WINNING_COUNT = 10;
 
 class PlayerGame extends Component {
   constructor(props) {
