@@ -66,7 +66,6 @@ class PlayerGame extends Component {
 
   makeGuess = (id) => {
     let currentGuessCount = this.state.guessCount;
-    let currentCorrectCount = this.state.correctCount;
 
     this.setState({guessCount: currentGuessCount + 1});
     (id === this.state.maxPPGPlayer.id) ? this.handleCorrectGuess() : this.handleIncorrectGuess();
