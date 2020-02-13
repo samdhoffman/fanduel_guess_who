@@ -33,14 +33,14 @@
         opacity:0;
         width:0;
         height:0;
-        transition: opacity 0.5s 0.5s;
+        transition: opacity 0.5s ease-out;
       }
 
       .fade-in{
         opacity:1;
         width:200px;
         height:200px;
-        transition: opacity 0.5s 0.5s;
+        transition: opacity 0.5s ease-in;
       }
 
       .front.fade-out {
