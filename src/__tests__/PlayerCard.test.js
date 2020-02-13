@@ -1,14 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { render, cleanup } from '@testing-library/react';
-import axios from 'axios';
 import PlayerGame from '../components/PlayerGame';
 import PlayerCard from '../components/PlayerCard';
 import { findByTestAttr } from '../../utils';
 
 afterEach(cleanup);
-
-jest.mock('axios');
 
 const setup = (props={}) => {
   const component = shallow(<PlayerCard {...props} />);

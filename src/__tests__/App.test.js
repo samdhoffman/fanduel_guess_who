@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { render } from '@testing-library/react';
-import App from './App';
-import { findByTestAttr } from '../utils';
+import App from '../App';
+import { findByTestAttr } from '../../utils';
 
 const setup = (props={}) => {
   const component = shallow(<App {...props} />);
