@@ -36,8 +36,8 @@ class PlayerGame extends Component {
       const response = await axios.get(URL);
       this.setState({playerData: response.data});
       this.shufflePlayers(response.data.players);
-    } catch(error) {
-      console.log(error);
+    } catch(error) {      
+      this.setState(() => { throw error; });
     }
   }
 
