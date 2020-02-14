@@ -123,7 +123,9 @@ class PlayerGame extends Component {
     if (this.state.correctStatus) {
       return (
         <h3>Correct! &nbsp;
-          <span role="img" aria-label="strong">&#128170;</span>
+          <span role="img" aria-label="strong">
+            &#128170; {Math.round(this.state.maxPPGPlayer.fppg)} Fanduel Points Per Game
+          </span>
         </h3>
       );
     }
