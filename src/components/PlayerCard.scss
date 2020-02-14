@@ -7,7 +7,7 @@
   border: 1px solid black;
   margin: 10px;
 
-  .player-info-container {
+  .player-container {
     display: flex;
     flex-direction: column;
 
@@ -16,36 +16,9 @@
       font-weight: bold;
     }
 
-    .player-info {
-      .player-img {
-        height: 200px;
-        width: 200px;
-      }
-
-      .player-details {
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        justify-content: center;
-      }
-
-      .fade-out {
-        opacity:0;
-        width:0;
-        height:0;
-        transition: opacity 0.5s ease-out;
-      }
-
-      .fade-in{
-        opacity:1;
-        width:200px;
-        height:200px;
-        transition: opacity 0.5s ease-in;
-      }
-
-      .front.fade-out {
-        visibility: hidden;
-      }
+    .player-img {
+      height: 200px;
+      width: 200px;
     }
 
     .guess-btn {
